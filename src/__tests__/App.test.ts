@@ -63,4 +63,13 @@ describe("Taborok tests", () => {
         const db = taborok.getTartTaborokSzama(8, 1);
         expect(db).toBe(3);
     });
+
+    test("7. feladat - Tanuló táborai és részvétel", () => {
+        const tanulo = "L";
+        const tanuloTaborok = taborok.getTanuloTaborok(tanulo);
+        expect(tanuloTaborok.length).toBeGreaterThan(0);
+
+        const canAttendAll = taborok.canAttendAllTaborok(tanuloTaborok);
+        expect(canAttendAll).toBe(false);
+    });
 });

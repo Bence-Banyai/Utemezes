@@ -66,4 +66,18 @@ export class Taborok {
         return this.taborok.filter(tabor => this.sorszam(tabor.kezdoHo, tabor.kezdoNap) <= napSorszam && napSorszam <= this.sorszam(tabor.vegHo, tabor.vegNap)).length;
     }
 
+    public getTanuloTaborok(tanulo: string): Tabor[] {
+        return this.taborok.filter(tabor => tabor.tanulok.includes(tanulo));
+    }
+
+    public canAttendAllTaborok(taborok: Tabor[]): boolean {
+        for (let i = 0; i < taborok.length - 1; i++) {
+            const currentEnd = this.sorszam(taborok[i].vegHo, taborok[i].vegNap);
+            const nextStart = this.sorszam(taborok[i + 1].kezdoHo, taborok[i + 1].kezdoNap);
+            if (currentEnd >= nextStart) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
