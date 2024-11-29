@@ -21,6 +21,11 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     const taborok = new Taborok();
 
+    res.write("2. feladat\n");
+    res.write(`Az adatsorok száma: ${taborok.getAdatsorokSzama()}\n`);
+    res.write(`Az először rögzített tábor témája: ${taborok.getElsoTaborTemaja()}\n`);
+    res.write(`Az utoljára rögzített tábor témája: ${taborok.getUtolsoTaborTemaja()}\n`);
+
     res.write("</pre></body></html>");
     res.end();
 }

@@ -27,4 +27,17 @@ export class Taborok {
             };
         });
     }
+    
+    public getAdatsorokSzama(): number {
+        return this.taborok.length;
+    }
+
+    public getElsoTaborTemaja(): string {
+        return this.taborok[0].tema;
+    }
+
+    public getUtolsoTaborTemaja(): string {
+        return this.taborok[this.taborok.length - 1].tema;
+    }
+
 }
