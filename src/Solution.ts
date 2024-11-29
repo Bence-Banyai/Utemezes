@@ -44,4 +44,10 @@ export class Taborok {
         return this.taborok.filter(tabor => tabor.tema === "zenei");
     }
 
+    public getLegnepszerubbTaborok(): Tabor[] {
+        const maxLetszam = Math.max(...this.taborok.map(tabor => tabor.tanulok.length));
+        console.log(maxLetszam);
+        return this.taborok.filter(tabor => tabor.tanulok.length === maxLetszam);
+    }
+
 }
