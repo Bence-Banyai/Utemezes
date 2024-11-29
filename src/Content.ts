@@ -26,6 +26,16 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     res.write(`Az először rögzített tábor témája: ${taborok.getElsoTaborTemaja()}\n`);
     res.write(`Az utoljára rögzített tábor témája: ${taborok.getUtolsoTaborTemaja()}\n`);
 
+    res.write("3. feladat\n");
+    const zeneiTaborok = taborok.getZeneiTaborok();
+    if (zeneiTaborok.length > 0) {
+        zeneiTaborok.forEach(tabor => {
+            res.write(`Zenei tábor kezdődik ${tabor.kezdoHo}. hó ${tabor.kezdoNap}. napján.\n`);
+        });
+    } else {
+        res.write("Nem volt zenei tábor.\n");
+    }
+    
     res.write("</pre></body></html>");
     res.end();
 }

@@ -40,4 +40,8 @@ export class Taborok {
         return this.taborok[this.taborok.length - 1].tema;
     }
 
+    public getZeneiTaborok(): Tabor[] {
+        return this.taborok.filter(tabor => tabor.tema === "zenei");
+    }
+
 }
