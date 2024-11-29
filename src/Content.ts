@@ -35,6 +35,13 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     } else {
         res.write("Nem volt zenei tábor.\n");
     }
+
+    res.write("4. feladat\n");
+    res.write("Legnépszerűbbek:\n");
+    const legnepszerubbTaborok = taborok.getLegnepszerubbTaborok();
+    legnepszerubbTaborok.forEach(tabor => {
+        res.write(`${tabor.kezdoHo} ${tabor.kezdoNap} ${tabor.tema}\n`);
+    });
     
     res.write("</pre></body></html>");
     res.end();
