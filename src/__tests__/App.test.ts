@@ -37,19 +37,25 @@ describe("Taborok tests", () => {
     test("4. feladat - Legnépszerűbb táborok", () => {
         const legnepszerubbTaborok = taborok.getLegnepszerubbTaborok();
 
-        const maxLetszam = 11; // Replace with actual maximum létszám
+        const maxLetszam = 11;
         legnepszerubbTaborok.forEach(tabor => {
             expect(tabor.tanulok.length).toBe(maxLetszam);
         });
 
-        // Expected táborok details
         const expectedTaborok = [
-            { kezdoHo: 8, kezdoNap: 27, tema: "fotos" }, // Replace with actual tábor data
+            { kezdoHo: 8, kezdoNap: 27, tema: "fotos" },
         ];
 
         expectedTaborok.forEach(expectedTabor => {
             const tabor = legnepszerubbTaborok.find(t => t.kezdoHo === expectedTabor.kezdoHo && t.kezdoNap === expectedTabor.kezdoNap && t.tema === expectedTabor.tema);
             expect(tabor).toBeDefined();
         });
+    });
+
+    test("5. feladat - Sorszám függvény", () => {
+        expect(taborok.sorszam(6, 16)).toBe(1);
+        expect(taborok.sorszam(7, 1)).toBe(16);
+        expect(taborok.sorszam(8, 1)).toBe(47);
+        expect(taborok.sorszam(8, 31)).toBe(77);
     });
 });

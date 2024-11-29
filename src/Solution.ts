@@ -50,4 +50,15 @@ export class Taborok {
         return this.taborok.filter(tabor => tabor.tanulok.length === maxLetszam);
     }
 
+    public sorszam(ho: number, nap: number): number {
+        if (ho === 6) {
+            return nap - 15;
+        } else if (ho === 7) {
+            return nap + 15;
+        } else if (ho === 8) {
+            return nap + 46;
+        }
+        return 0;
+    }
+
 }
