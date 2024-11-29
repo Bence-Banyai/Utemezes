@@ -13,7 +13,7 @@ export class Taborok {
     private readonly taborok: readonly Tabor[];
 
     constructor() {
-        const data: string = fs.readFileSync("./src/data/taborok.txt", "utf8");
+        const data: string = fs.readFileSync("./src/taborok.txt", "utf8");
         const lines: readonly string[] = data.trim().split("\n");
         this.taborok = lines.map(line => {
             const parts = line.trim().split(/\s+/);
