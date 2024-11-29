@@ -42,6 +42,20 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     legnepszerubbTaborok.forEach(tabor => {
         res.write(`${tabor.kezdoHo} ${tabor.kezdoNap} ${tabor.tema}\n`);
     });
+
+    res.write("6. feladat\n");
+    const queryObject = url.parse(req.url || "", true).query;
+    const hoInput = queryObject.ho as string;
+    const napInput = queryObject.nap as string;
+
+    if (hoInput && napInput) {
+        const h = parseInt(hoInput, 10);
+        const n = parseInt(napInput, 10);
+        const db = taborok.getTartTaborokSzama(h, n);
+        res.write(`Ekkor éppen ${db} tábor tart.\n`);
+    } else {
+        res.write("Adja meg a hónapot és a napot az URL-ben: Pl. /?ho=7&nap=15\n");
+    }
     
     res.write("</pre></body></html>");
     res.end();
