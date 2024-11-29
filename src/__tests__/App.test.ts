@@ -58,4 +58,9 @@ describe("Taborok tests", () => {
         expect(taborok.sorszam(8, 1)).toBe(47);
         expect(taborok.sorszam(8, 31)).toBe(77);
     });
+
+    test("6. feladat - Táborok száma adott napon", () => {
+        const db = taborok.getTartTaborokSzama(8, 1);
+        expect(db).toBe(3);
+    });
 });

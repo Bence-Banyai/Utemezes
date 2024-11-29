@@ -61,4 +61,9 @@ export class Taborok {
         return 0;
     }
 
+    public getTartTaborokSzama(h: number, n: number): number {
+        const napSorszam = this.sorszam(h, n);
+        return this.taborok.filter(tabor => this.sorszam(tabor.kezdoHo, tabor.kezdoNap) <= napSorszam && napSorszam <= this.sorszam(tabor.vegHo, tabor.vegNap)).length;
+    }
+
 }
