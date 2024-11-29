@@ -56,6 +56,31 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     } else {
         res.write("Adja meg a hónapot és a napot az URL-ben: Pl. /?ho=7&nap=15\n");
     }
+
+    res.write("7. feladat\n");
+    const tanuloInput = queryObject.tanulo as string;
+
+    if (tanuloInput) {
+        const tanuloTaborok = taborok.getTanuloTaborok(tanuloInput);
+        if (tanuloTaborok.length > 0) {
+            tanuloTaborok.sort((a, b) => {
+                const aStart = taborok.sorszam(a.kezdoHo, a.kezdoNap);
+                const bStart = taborok.sorszam(b.kezdoHo, b.kezdoNap);
+                return aStart - bStart;
+            });
+
+            const canAttendAll = taborok.canAttendAllTaborok(tanuloTaborok);
+            if (canAttendAll) {
+                res.write("Mindegyik táborban részt vehet.\n");
+            } else {
+                res.write("Nem mehet el mindegyik táborba.\n");
+            }
+        } else {
+            res.write("A megadott tanuló nem vesz részt egy táborban sem.\n");
+        }
+    } else {
+        res.write("Adja meg egy tanuló betűjelét az URL-ben: Pl. /?tanulo=A\n");
+    }
     
     res.write("</pre></body></html>");
     res.end();
